@@ -1,0 +1,46 @@
+
+.cart-item{
+  display: block;
+    flex-direction: row;
+    
+}
+
+img{
+    width: 100%;
+    height: 90%;
+    
+}
+
+.item-info{
+    width: 90%;
+    gap: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+
+}
+
+.cartImg{
+    width: 6%;
+    height: 4%;
+    object-fit: contain;
+}
+
+.btn-checkout{
+    font-size: 1.125rem;
+}
+
+
+.fa-heart:hover{
+color: red;
+}
+
+.fa-shopping-bag:hover{
+    color: green;
+}
+
+.fa-expand-arrows-alt:hover{
+    color:brown
+}
