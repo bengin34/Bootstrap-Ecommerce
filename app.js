@@ -3,16 +3,6 @@ const taxRate = 0.18;
 const shippingPrice = 30;
 const shippingFreePrice = 1000;
 
-// stock details
-const stockHighHeel = 20;
-const stockSlowish = 2;
-const stockComfortBlack = 12;
-const stockFlatlayPink = 9;
-const stockSneakWhite = 5;
-const stockProudBrown = 4;
-const stockTraveller = 6;
-const stockBullyWhiteBlack = 8;
-
 //! boş array oluşturdum üstteki shopping için
 let ShoppingCart = JSON.parse(localStorage.getItem("ShoppingCart")) || [];
 
@@ -21,14 +11,7 @@ window.addEventListener("load", () => {
   localStorage.setItem("taxRate", taxRate);
   localStorage.setItem("shippingPrice", shippingPrice);
   localStorage.setItem("shippingFreePrice", shippingFreePrice);
-  localStorage.setItem("stockHighHeel", stockHighHeel);
-  localStorage.setItem("stockSlowish ", stockSlowish);
-  localStorage.setItem("stockComfortBlack", stockComfortBlack);
-  localStorage.setItem("stockFlatlayPink", stockFlatlayPink);
-  localStorage.setItem("stockSneakWhite", stockSneakWhite);
-  localStorage.setItem("stockProudBrown", stockProudBrown);
-  localStorage.setItem("stockTraveller", stockTraveller);
-  localStorage.setItem("stockBullyWhiteBlack", stockBullyWhiteBlack);
+
   getShoppingCartFromLocalStorage();
 });
 
@@ -68,7 +51,10 @@ containerDiv.addEventListener("click", (e) => {
         <span class="number">1</span>
         <button class="btn btn-outline-warning plus" >+</button>
         <button class="btn btn-danger btn-remove">Remove</button>
+        <p class = "item-price" style = "display: none" > ${productPrice} </p>
         `;
+        let CheckoutItem = document.createElement("li")
+        CheckoutItem.classList
 
         //! array e yeni ıtem ekleme
     const buyItem = {
@@ -108,14 +94,15 @@ containerDiv.addEventListener("click", (e) => {
   //! azaltma butonuna basılırsa
   else if (e.target.className == "btn btn-outline-warning minus") {
     let productAmount = e.target.closest(".item-info").querySelector(".number");
+    let itemPrice = e.target.closest(".item-info").querySelector(".item-price")
+    console.log(itemPrice);
     if (productAmount.innerText > 1) {
       productAmount.innerText--;
 
       let cartProductPrice = e.target
         .closest(".item-info")
         .querySelector(".cartProductPrice");
-      cartProductPrice.innerText =
-        cartProductPrice.innerText * productAmount.innerText;
+      cartProductPrice.innerText = itemPrice.innerText * productAmount.innerText;
     } else {
       if (confirm("Do you want to remove?")) {
         e.target.closest(".item-info").remove();
